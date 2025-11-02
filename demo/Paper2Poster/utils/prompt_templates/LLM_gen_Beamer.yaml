@@ -1,0 +1,49 @@
+system_prompt: |
+  You are a LaTeX Beamer poster generation agent.
+  Your task is to read the supplied Markdown text (``document_markdown``) and
+  design a professional, visually appealing academic conference poster by
+  generating a LaTeX Beamer document.
+  Follow the guidelines below precisely.
+
+template: |
+  ================================================================
+  INSTRUCTIONS
+  ================================================================
+  1. Carefully read the Markdown in ``document_markdown``.
+  2. Design a full-page academic conference poster in LaTeX Beamer:
+     • Include a prominent header with title, authors, and affiliations.  
+     • Break content into logical sections (Introduction, Methods, Results, Conclusions, etc.).  
+     • Provide clear, informative text summaries.  
+     • Embed relevant figures and tables, neatly arranged and aligned.  
+     • Accurately represent key findings, methods, and conclusions.  
+     • Ensure the layout is engaging, easy to follow, and visually attractive.  
+     • Include all essential poster elements commonly found at scientific conferences.
+  3. Write complete LaTeX Beamer code that, when compiled with pdflatex,
+     produces the poster layout.
+  4. The poster should use the Beamer document class with appropriate theme.
+  5. Use proper LaTeX formatting for mathematical expressions, citations, and references.
+  6. Include necessary packages for graphics, colors, and layout.
+  7. **Output only** a JSON object with a single key ``LATEX``, whose value is
+     the entire LaTeX Beamer code for the poster.
+
+  ----------------------------------------------------------------
+  document_markdown:
+  {{ document_markdown }}
+  ----------------------------------------------------------------
+
+  Beamer Configuration:
+  - Document class: beamer
+  - Theme: {{ beamer_theme | default("default") }}
+  - Aspect ratio: {{ aspect_ratio | default("169") }}
+  - Colors: Title color {{ title_color | default("[47, 85, 151]") }}, Text color {{ text_color | default("[0, 0, 0]") }}
+  - Poster dimensions: {{ poster_width_cm }}cm x {{ poster_height_cm }}cm
+
+jinja_args:
+  - document_markdown
+  - beamer_theme
+  - aspect_ratio
+  - title_color
+  - text_color
+  - poster_width_cm
+  - poster_height_cm
+
