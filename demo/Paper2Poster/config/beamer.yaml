@@ -1,0 +1,87 @@
+# Beamer Poster Configuration
+# 
+# Configure Beamer-specific options for poster generation.
+# You can override per-poster by placing a `beamer.yaml` next to the paper.pdf.
+
+# Beamer document class and theme
+document_class: "beamer"
+aspect_ratio: "169"  # 16:9 aspect ratio
+theme: "default"     # Beamer theme (default, Madrid, Warsaw, etc.)
+color_theme: "default"
+
+# Custom colors (RGB values 0-255)
+colors:
+  title_color: [47, 85, 151]    # Blue for titles
+  text_color: [0, 0, 0]         # Black for main text
+  background_color: [255, 255, 255]  # White background
+  accent_color: [128, 128, 128]      # Gray for accents
+
+# Font settings
+fonts:
+  title_font: "\\textbf"        # Bold for titles
+  author_font: "\\Large"        # Large for authors
+  institute_font: "\\normalsize" # Normal for institute
+  content_font: "\\normalsize"  # Normal for content
+
+# Layout settings
+layout:
+  margin_cm: 1                  # Margin in centimeters
+  frame_spacing: 0.5            # Spacing between frames
+  item_spacing: 0.3             # Spacing between items
+
+# Figure settings
+figures:
+  default_width_cm: 10          # Default figure width
+  default_height_cm: 8           # Default figure height
+  caption_font: "\\small"       # Caption font size
+  center_figures: true           # Center figures in frames
+
+# Section settings
+sections:
+  title_format: "\\Large\\textbf"  # Section title format
+  content_format: "\\normalsize"   # Section content format
+  bullet_style: "itemize"          # Bullet point style
+
+# Navigation settings
+navigation:
+  hide_navigation: true          # Hide navigation symbols
+  hide_footline: true            # Hide footline
+  hide_headline: true            # Hide headline
+
+# Custom LaTeX packages to include
+packages:
+  - "graphicx"                   # For including images
+  - "tikz"                      # For graphics
+  - "xcolor"                    # For colors
+  - "geometry"                  # For page layout
+  - "multicol"                  # For multi-column layout
+  - "array"                     # For tables
+  - "booktabs"                  # For professional tables
+  - "adjustbox"                 # For image adjustment
+
+# Custom LaTeX preamble (additional commands)
+preamble: |
+  % Custom commands
+  \\newcommand{\\postertitle}[1]{\\color{titlecolor}\\Huge\\textbf{#1}}
+  \\newcommand{\\posterauthor}[1]{\\Large{#1}}
+  \\newcommand{\\posterinstitute}[1]{\\normalsize{#1}}
+  
+  % Custom frame templates
+  \\setbeamertemplate{title page}{
+    \\begin{center}
+      \\vspace{1cm}
+      \\postertitle{\\inserttitle}
+      \\vspace{0.5cm}
+      \\posterauthor{\\insertauthor}
+      \\vspace{0.3cm}
+      \\posterinstitute{\\insertinstitute}
+    \\end{center}
+  }
+
+# Output settings
+output:
+  compile_pdf: true              # Whether to compile to PDF
+  keep_tex: true                 # Keep .tex file
+  keep_log: false                # Keep compilation log
+  pdflatex_timeout: 60           # Timeout for pdflatex in seconds
+
