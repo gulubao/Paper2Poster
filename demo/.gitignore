@@ -1,9 +1,8 @@
 input/
 output/
 runs
-Paper2Poster/assets/
+Paper2Video/assets/
 posterbuilder/latex_proj/figures/
-*.png
 *.pdf
 *.jpg
 *.wav

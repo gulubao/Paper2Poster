@@ -15,17 +15,63 @@
 % Fonts
 % ====================
 
-\newfontfamily\Raleway[Ligatures=TeX]{Raleway}
-\newfontfamily\Lato[Ligatures=TeX]{Lato}
-
+% Prefer local fonts under fonts/ if present; else fallback to system fonts; else DejaVu/Latin Modern
 \usefonttheme{professionalfonts}
 
-\setsansfont{Lato}[
-  UprightFont=*-Light,
-  ItalicFont=*-LightItalic,
-  BoldFont=*-Regular,
-  BoldItalicFont=*-Italic
-]
+% Raleway family
+\IfFileExists{fonts/Raleway/Raleway-Regular.ttf}{
+  \newfontfamily\Raleway[
+    Path=fonts/Raleway/,
+    UprightFont=*-Regular,
+    ItalicFont=*-Italic,
+    BoldFont=*-Bold,
+    BoldItalicFont=*-BoldItalic,
+    Ligatures=TeX
+  ]{Raleway}
+}{
+  \IfFontExistsTF{Raleway}{
+    \newfontfamily\Raleway[Ligatures=TeX]{Raleway}
+  }{
+    \newfontfamily\Raleway[Ligatures=TeX]{DejaVu Sans}
+  }
+}
+
+% Lato family + main sans font
+\IfFileExists{fonts/Lato/Lato-Regular.ttf}{
+  \newfontfamily\Lato[
+    Path=fonts/Lato/,
+    UprightFont=*-Light,
+    ItalicFont=*-LightItalic,
+    BoldFont=*-Regular,
+    BoldItalicFont=*-Italic,
+    Ligatures=TeX
+  ]{Lato}
+  \setsansfont{Lato}[
+    Path=fonts/Lato/,
+    UprightFont=*-Light,
+    ItalicFont=*-LightItalic,
+    BoldFont=*-Regular,
+    BoldItalicFont=*-Italic
+  ]
+}{
+  \IfFontExistsTF{Lato}{
+    \newfontfamily\Lato[Ligatures=TeX]{Lato}
+    \setsansfont{Lato}[
+      UprightFont=*-Light,
+      ItalicFont=*-LightItalic,
+      BoldFont=*-Regular,
+      BoldItalicFont=*-Italic
+    ]
+  }{
+    \IfFontExistsTF{DejaVu Sans}{
+      \setsansfont{DejaVu Sans}[BoldFont=*-Bold, ItalicFont=*-Oblique, BoldItalicFont=*-BoldOblique]
+      \newfontfamily\Lato[Ligatures=TeX]{DejaVu Sans}
+    }{
+      \setsansfont{Latin Modern Sans}
+      \newfontfamily\Lato[Ligatures=TeX]{Latin Modern Sans}
+    }
+  }
+}
 
 \setbeamerfont{headline}{family=\Raleway}
 \setbeamerfont{headline title}{size=\Huge,series=\bfseries}
