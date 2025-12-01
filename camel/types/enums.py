@@ -27,7 +27,7 @@ class RoleType(Enum):
 
 
 class ModelType(UnifiedModelType, Enum):
-    DEFAULT = os.getenv("DEFAULT_MODEL_TYPE", "gpt-4o-mini")
+    DEFAULT = os.getenv("DEFAULT_MODEL_TYPE", "gpt-5.1")
 
     GPT_3_5_TURBO = "gpt-3.5-turbo"
     GPT_4 = "gpt-4"
@@ -46,6 +46,7 @@ class ModelType(UnifiedModelType, Enum):
     GPT_5 = "gpt-5"
     GPT_5_MINI = "gpt-5-mini"
     GPT_5_NANO = "gpt-5-nano"
+    GPT_5_1 = "gpt-5.1"
 
     GLM_4 = "glm-4"
     GLM_4V = 'glm-4v'
@@ -246,6 +247,7 @@ class ModelType(UnifiedModelType, Enum):
             ModelType.GPT_5,
             ModelType.GPT_5_MINI,
             ModelType.GPT_5_NANO,
+            ModelType.GPT_5_1,
         }
     
     @property
@@ -274,6 +276,7 @@ class ModelType(UnifiedModelType, Enum):
             ModelType.GPT_5,
             ModelType.GPT_5_MINI,
             ModelType.GPT_5_NANO,
+            ModelType.GPT_5_1,
         }
 
     @property
@@ -661,6 +664,7 @@ class ModelType(UnifiedModelType, Enum):
             ModelType.GPT_5,
             ModelType.GPT_5_MINI,
             ModelType.GPT_5_NANO,
+            ModelType.GPT_5_1,
         }:
             return 1_048_576  # GPT-5 family with 1M+ token context
         elif self in {

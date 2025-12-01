@@ -16,3 +16,6 @@ eval_time_detail_parallel/
 *.sh
 .claude
 CLAUDE.md
+paper_dataset
+*/__pycache__/
+*.pyc

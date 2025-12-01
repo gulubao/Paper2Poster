@@ -148,6 +148,13 @@ def get_agent_config(model_type):
             "model_config": ChatGPTConfig().as_dict(),
             "model_platform": ModelPlatformType.OPENAI,
         }
+    elif model_type == 'gpt-5.1':
+        agent_config = {
+            "model_type": ModelType.GPT_5_1,
+            "model_config": ChatGPTConfig().as_dict(),
+            "model_platform": ModelPlatformType.OPENAI,
+        }
+        agent_config['model_config']['reasoning_effort'] = 'medium'
     elif model_type == 'vllm_qwen_vl':
         agent_config = {
             "model_type": "Qwen/Qwen2.5-VL-7B-Instruct",

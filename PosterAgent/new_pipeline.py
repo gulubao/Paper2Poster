@@ -28,8 +28,8 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Poster Generation Pipeline with Logo Support')
     parser.add_argument('--poster_path', type=str)
-    parser.add_argument('--model_name_t', type=str, default='4o')
-    parser.add_argument('--model_name_v', type=str, default='4o')
+    parser.add_argument('--model_name_t', type=str, default='gpt-5.1')
+    parser.add_argument('--model_name_v', type=str, default='gpt-5.1')
     parser.add_argument('--index', type=int, default=0)
     parser.add_argument('--poster_name', type=str, default=None)
     parser.add_argument('--tmp_dir', type=str, default='tmp')

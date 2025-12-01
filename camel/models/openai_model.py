@@ -117,6 +117,7 @@ class OpenAIModel(BaseModelBackend):
             ModelType.GPT_5,
             ModelType.GPT_5_MINI,
             ModelType.GPT_5_NANO,
+            ModelType.GPT_5_1,
         ]:
             # warnings.warn(
             #     "Warning: You are using an O1 model (O1_MINI or O1_PREVIEW), "

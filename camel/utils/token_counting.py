@@ -71,6 +71,7 @@ def get_model_encoding(value_for_tiktoken: str):
             ModelType.GPT_5.value,
             ModelType.GPT_5_MINI.value,
             ModelType.GPT_5_NANO.value,
+            ModelType.GPT_5_1.value,
         ]:
             encoding = tiktoken.get_encoding("o200k_base")
         else:
